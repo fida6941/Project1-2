@@ -1,5 +1,5 @@
 // Creates player and sets class.
-player* NewPlayer(class class, char name[50])
+player* NewPlayer(class class, char name[50], int attackPower)
 {
     // Allocate memory to player pointer.
     player *tempPlayer = malloc(sizeof(player));
@@ -21,14 +21,14 @@ player* NewPlayer(class class, char name[50])
     {
     case NFN:
         tempPlayer->healthpoints = 100;
-        tempPlayer->attack = 50;
+        tempPlayer->attack = attackPower;
         tempPlayer->defense = 30;
         tempPlayer->class = NFN;
         break;
 
     case DRAGONMAN:
         tempPlayer->healthpoints = 100;
-        tempPlayer->attack = 50;
+        tempPlayer->attack = attackPower;
         tempPlayer->defense = 30;
         tempPlayer->class = DRAGONMAN;
         break;
