@@ -19,12 +19,7 @@ void dragonmanbody()
 {
     int i, j = 0,k;
 
-    int gd=DETECT,gm;
 
-    initgraph(&gd, &gm,NULL);
-    DWORD screenwidth= GetSystemMetrics(SM_CXSCREEN);
-    DWORD screenheight= GetSystemMetrics(SM_CXSCREEN);
-    initwindow(screenwidth, screenheight, "", -2,-3);
     setcolor(GREEN);      //Dragonmanstart
     rectangle(200,200,300,300);
     int points[]= {200,200,120,250,200,300,200,200};
@@ -42,7 +37,7 @@ void dragonmanbody()
     line(330,130,280,170);
     rectangle(200,300,240,340);
     rectangle(260,300,300,340); //dragonmanend
-    delay(20);
+    //delay(20);
 }
 
 void player()
@@ -108,7 +103,7 @@ void heroHealthPoints(int a)
 
 chooseWeapon()
 {
-    setcolor(GREEN);
+    /*setcolor(GREEN);
     rectangle(200,200,300,300);
     int points1[]= {200,200,120,250,200,300,200,200};
     drawpoly(4,points1);
@@ -142,7 +137,7 @@ chooseWeapon()
     drawpoly(4,points3);
     line(670,560,700,540);
     line(670,550,700,530);
-    line(700,540,700,530);
+    line(700,540,700,530);*/
     settextstyle(8,HORIZ_DIR,2);
     outtextxy(500,700,"Choose your weapon:");
     outtextxy(500,750,"1.Sword 2.Dagger");
@@ -152,7 +147,7 @@ chooseWeapon()
 
 attackrun()
 {
-    setcolor(GREEN);
+    /*setcolor(GREEN);
     rectangle(200,200,300,300);
     int points4[]= {200,200,120,250,200,300,200,200};
     drawpoly(4,points4);
@@ -186,7 +181,7 @@ attackrun()
     drawpoly(4,points6);
     line(670,560,700,540);
     line(670,550,700,530);
-    line(700,540,700,530);
+    line(700,540,700,530);*/
     settextstyle(8,HORIZ_DIR,2);
     outtextxy(500,700,"Choose one option:");
     outtextxy(500,750,"1.Attack 2.Run");
@@ -195,8 +190,46 @@ attackrun()
 }
 
 
+void dragonmanAttack()
+{
+    int i,j,k;
+    for(i=0,j=0; i<=300; i=i+10,j=j+5)  //dragon attacks
+    {
+        setcolor(RED);
+        circle(250+i,250+i,20+j);
+        setfillstyle(SOLID_FILL, RED);
+        floodfill(250+i,250+i,RED);
+        delay(50);
+        if(i==300)
+            break;
+        k=j;
+    }
+    delay(30);
+    cleardevice();
+    setcolor(GREEN);      //Dragonmanstart
+    rectangle(200,200,300,300);
+    int points3[]= {200,200,120,250,200,300,200,200}; //second scene,player attacks;
+    drawpoly(4,points3);
+    int points5[]= {300,200,380,250,300,300,300,200};
+    drawpoly(4,points5);
+    line(170,170,200,200);
+    line(330,170,300,200);
+    line(330,170,170,170);
+    line(200,200,250,250);
+    line(300,200,250,250);
+    line(170,170,170,130);
+    line(170,130,220,170);
+    line(330,130,330,170);
+    line(330,130,280,170);
+    rectangle(200,300,240,340);
+    rectangle(260,300,300,340); //dragonmanend
+    //delay(500);
+}
+
+
 main()
 {
+    int f1 = 0, f2 = 0, f3 = 0;
     int gd=DETECT,gm;
     initgraph(&gd,&gm,NULL);
     DWORD screenwidth=GetSystemMetrics(SM_CXSCREEN);
@@ -224,17 +257,27 @@ main()
             char attackOption;
             attackOption = getch() - '0';
             if(attackOption == 1)
-               {
-                   dragonman.healthpoints = dragonman.healthpoints - (player1.attack - dragonman.defense);
-                   villainHealthPoints(dragonman.healthpoints);
-               }
+            {
+                dragonman.healthpoints = dragonman.healthpoints - (player1.attack - dragonman.defense);
+                villainHealthPoints(dragonman.healthpoints);
+                delay(1500);
+            }
         }
         else
         {
+            dragonmanAttack();
             player1.healthpoints = player1.healthpoints - (dragonman.attack - player1.defense);
             heroHealthPoints(player1.healthpoints);
         }
         i++;
+        player();
+        dragonmanbody();
+        villainHealthPoints(dragonman.healthpoints);
+    }
+    //if(player1.healthpoints<=0)
+    //else if(dragonman.healthpoints<=0)
+    {
+        f1 = 1;
     }
 
     delay(5000);
