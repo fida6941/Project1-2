@@ -67,7 +67,7 @@ void heroHealthPoints(int a)
     outtextxy(1050, 65, str);
     return;
 }
-chooseWeapon()
+chooseSword()
 {
     setcolor(RED);
     rectangle(490, 740, 900, 800);
@@ -79,7 +79,23 @@ chooseWeapon()
     setcolor(WHITE);
     settextstyle(8,HORIZ_DIR,2);
     outtextxy(500,700,"Choose your weapon:");
-    outtextxy(500,750,"1.Sword 2.Axe");
+    outtextxy(500,750,"1.Sword");
+}
+
+
+chooseSwordSpear()
+{
+    setcolor(RED);
+    rectangle(490, 740, 900, 800);
+    setfillstyle(1, BLACK);
+    floodfill(491, 741, RED);
+    setcolor(BLACK);
+    rectangle(490, 740, 900, 800);
+
+    setcolor(WHITE);
+    settextstyle(8,HORIZ_DIR,2);
+    outtextxy(500,700,"Choose your weapon:");
+    outtextxy(500,750,"1. Sword   2. Spear");
 }
 
 chooseWeapon2()
@@ -129,19 +145,14 @@ chooseWeapon4()
     outtextxy(500,720,"3. Blue Flame");
 }
 
-attackrun()
+void fightoption()
 {
-    setcolor(RED);
-    rectangle(490, 700, 1100, 800);
-    setfillstyle(1, BLACK);
-    floodfill(491, 741, RED);
-    setcolor(BLACK);
-    rectangle(490, 700, 1100, 800);
-
     setcolor(WHITE);
-    settextstyle(8,HORIZ_DIR,2);
-    outtextxy(500,700,"Choose one option:");
-    outtextxy(500,750,"1.Attack 2.Run");
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(400,250,"What would you like to do?");
+    outtextxy(450,350,"1. Fight.");
+    outtextxy(450,400,"2. Run.");
+    outtextxy(450,450,"3. Try to be his friend.");
 }
 
 playerattacksword()
@@ -178,7 +189,7 @@ playerattacksword()
             break;
     }
     //playerend
-    delay(500);
+    //delay(500);
 }
 
 playerattackflame()

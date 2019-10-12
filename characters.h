@@ -1,81 +1,3 @@
-void malePlayerStory()
-
-{
-    cleardevice();
-    setcolor(WHITE);
-    circle(500,500,100);
-    arc(450,480,0,180,20);
-    arc(550,480,0,180,20);
-    arc(500,500,0,180,10);
-    ellipse(500,600,100,250,50,80);
-    ellipse(500,600,290,80,50,80);
-    ellipse(500,600,120,240,40,80);
-    ellipse(500,600,130,230,30,80);
-    ellipse(500,600,120,230,10,80);
-    ellipse(500,600,280,90,40,80);
-    ellipse(500,600,260,60,30,80);
-    ellipse(500,600,240,60,10,80);
-    arc(500,400,210,330,40);
-    line(570,600,640,600); //body
-    line(640,600,660,700);
-    arc(630,700,0,180,50);
-    line(430,600,360,600);
-    line(360,600,340,700);
-    arc(370,700,0,180,50);
-    delay(200);
-
-    setcolor(RED);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,2);
-    outtextxy(150,250, "This is Sayan Sama. The leader of the GOG(Guardian of the Galaxy). He was");
-    outtextxy(150,270,"sent to Planet02 as the alarm was sent from here but found himself stuck here");
-    outtextxy(150,290,"for 20 days. Guide him through the journey and keep him alive.");
-    setcolor(RED);
-    outtextxy(150,320,"Currently he has a sword. Help him to find more weapons and superpowers");
-    outtextxy(150,340,"to gain power and safety.");
-    getch();
-    cleardevice();
-}
-
-
-void femalePlayerStory()
-
-{
-    cleardevice();
-    delay(200);
-    setcolor(WHITE);
-    line(570,600,640,600); //body
-    line(640,600,660,700);
-    arc(630,700,0,180,50);
-    line(430,600,360,600);
-    line(360,600,340,700);
-    arc(370,700,0,180,50);
-    circle(500,500,100);
-    arc(450,480,0,180,20);
-    arc(550,480,0,180,20);
-    arc(500,500,0,180,10);
-    setcolor(RED);
-    circle(500,535,20);
-    setfillstyle(SOLID_FILL, RED);
-    floodfill(500,535,RED);
-    setcolor(WHITE);
-    arc(500,400,260,330,40);
-    ellipse(500,550,90,220,110,180);
-    ellipse(500,550,340,70,110,180);
-    line(500,610,500,680); //femaleends
-
-    setcolor(RED);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,2);
-    outtextxy(150,220, "This is Sayan Sama. The leader of the GOG(Guardian of the Galaxy). She was");
-    outtextxy(150,240,"sent to Planet02 as the alarm was sent from here but found herself stuck here");
-    outtextxy(150,260,"for 20 days. Guide her through the journey and keep her alive.");
-    setcolor(RED);
-    outtextxy(150,280,"Currently she has a sword. Help her to find more weapons and superpowers");
-    outtextxy(150,300,"to gain power and safety.");
-    getch();
-    cleardevice();
-}
-
-
 void dragonmanbody()
 
 {
@@ -99,6 +21,7 @@ void dragonmanbody()
     rectangle(260,300,300,340); //dragonmanend
     //delay(20);
 }
+
 
 
 void magicantobody()

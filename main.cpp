@@ -2,6 +2,7 @@
 #include<graphics.h>
 #include "characters.h"
 #include "fight.h"
+#include "story.h"
 
 struct status
 {
@@ -17,29 +18,6 @@ struct status dragonman = {"DRAGONMAN", 100, 50, 20};
 struct status magicanto = {"MAGICANTO", 200, 50, 30};
 struct status bandersnatch = {"BANDERSNATCH", 300, 100, 50};
 
-quizwintext()
-{
-    setcolor(BLUE);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,3);
-    outtextxy(150,310,"You answered correctly!");
-    outtextxy(150,350,"You get spear with 5 chances");
-    outtextxy(150,400,"Press any key to continue");
-    getch();
-    cleardevice();
-}
-
-quizlostquiz()
-{
-    setcolor(BLUE);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,3);
-    outtextxy(150,310,"Your answer is incorrect!");
-    outtextxy(150,350,"You don't get new weapon");
-    outtextxy(150,400,"Press any key to continue");
-    getch();
-    cleardevice();
-}
-
-int spearExists, spear;
 
 main()
 {
@@ -51,166 +29,44 @@ main()
     DWORD screenheight=GetSystemMetrics(SM_CXSCREEN);
     initwindow(screenwidth,screenheight,"",-2,-3);
 
-    int i,j=0,k;
-again:
-    for( i = 0 ; i <= 500 ; i = i + 10 )  //welcome line
-    {
-        setcolor(BLUE);
-        settextstyle(2,HORIZ_DIR,10);
-        outtextxy(150,700-i,"Welcome to Bandersnatch");
-        delay(20);
-        if(i==500)
-            break;
-        cleardevice();
-    }
-    delay(10);
-    for( j = 0 ; j<= 500 ; j = j + 10)
-    {
-        setcolor(BLUE);
-        settextstyle(2,HORIZ_DIR,8);
-        outtextxy(150,770-i,"Press any key to continue");
-        delay(10);
-        if(i==500)
-            break;
-        cleardevice();
-    }
-    getch();
+    interface1();
+    interface2();
+    int spear = oldmanquiz();
+    friendgone();
 
+//fight dragonman
+fightoption();
+int input, flamethrower = 0, gem;
+while(input != 1 && input != 2 && input != 3)
+    input = getch() - '0';
     cleardevice();
-again1:
-    setcolor(BLUE);
-    settextstyle(2,HORIZ_DIR,10);
-    //outtextxy(150,200,"Choose an Option");
-    outtextxy(150,300,"1. Play");
-    outtextxy(150,400,"2. Manual");
-    outtextxy(150,500, "3. Exit");
-    int input;
-    while(input != 1 && input != 2 && input != 3)
-        //outtextxy(150,600,"Press 1,2 or 3");
-        input = getch() - '0';
-    if(input==1)
-    {
-        cleardevice();
-        malePlayerStory();
-        femalePlayerStory();
-        goto again2;
-    }
-    else if(input==2)
-    {
-        cleardevice();
-        setcolor(WHITE);
-        settextstyle(2,HORIZ_DIR,8);
-        outtextxy(150,300,"As you go through the game our main character will face some questions.");
-        delay(200);
-        outtextxy(150,340, "Enter corresponding numbers from keyboard for any kind of input.");
-        delay(200);
-        outtextxy(150,380,"Fight with the enemies,collect gems and health potions as much as");
-        delay(200);
-        outtextxy(150,420,"possible and beat the enemies to get a possible positive outcome! Enjoy!");
-        delay(200);
-        outtextxy(150,460, "Press any key to continue.");
-        getch();
-        cleardevice();
-        goto again1;
-    }
-    else if(input==3)
-    {
-        return 0;
-    }
-
-
-again2:
-    setcolor(BLUE);
-    outtextxy(150,310,"You started your journey and encountered an old man.");
-    outtextxy(150,350,"Do you want to approach him?");
-    outtextxy(150,380,"1. YES   2. NO");
-
-    input=getch();
-    cleardevice();
-    if(input==49)
-    {
-        goto again3;
-    }
-    else
-        goto again4;
-    cleardevice();
-
-
-
-again3:
-    settextstyle(2,HORIZ_DIR,8);
-    setcolor(BLUE);
-    outtextxy(20,20,"Oldman: You are going to need more than a sword to survive.");
-    delay(500);
-    outtextxy(20,90,"I can give you more weapon");
-    delay(500);
-    outtextxy(20,160,"BUT...");
-    delay(500);
-    outtextxy(20,230,"You'll have to answer this question");
-    delay(500);
-    outtextxy(20,300,"Press enter to see the question");
-    getch();
-    cleardevice();
-    outtextxy(200,200,"WHAT IS THE 7TH LETTER OF THE ALPHABET?");
-    delay(500);
-    outtextxy(300,290,"1. G");
-    delay(500);
-    outtextxy(300,360,"2. H");
-    delay(500);
-    outtextxy(300,430,"3. E");
-    delay(500);
-    outtextxy(300,500,"4. P");
-    delay(500);
-
-    char input2;
-    while(input2 != 1 && input2 != 2 && input2 != 3 && input2 != 4)
-        input2 = getch() - '0';
-    cleardevice();
-    int *ptr;
-    if(input2 == 2)
-    {
-
-        quizwintext();
-        spear = 5;
-        spearExists = 1;
-    }
-    else
-    {
-        quizlostquiz();
-        spearExists = 0;
-        spear = 0;
-    }
-
-
-
-    cleardevice();
-
-
-    //fightdragonman
-again4:
-
-    settextstyle(2,0,10);
-    outtextxy(450,200,"You encountered Dragonman!");
-    delay(2000);
-    cleardevice();
+if (input == 3)
+{
+     flamethrower = dragonmanpuzzle();
+}
+if(flamethrower == 2)
+{
+    gem = 50;
+}
+else if(flamethrower == 0)
+{
     dragonmanbody();
     playerbody();
     villainHealthPoints(100);
     heroHealthPoints(100);
-    attackrun();
     char attackOption = 0;
     while (attackOption != 1 && attackOption != 2)
         attackOption = getch() - '0';
     if(attackOption == 1)
     {
-        i = 0;
+        int i = 0;
         while(player1.healthpoints>0 && dragonman.healthpoints>0)
         {
             if(i%2 == 0)
             {
-                if(spearExists == 0)
+                if(spear == 0)
                     chooseSword();
-                else if(spearExists == 1 && spear>0)
+                else if(spear>0)
                     chooseSwordSpear();
                 char weaponOption = 0;
                 while (weaponOption != 1 && weaponOption != 2)
@@ -249,12 +105,19 @@ again4:
             dragonmanbody();
             villainHealthPoints(dragonman.healthpoints);
             heroHealthPoints(player1.healthpoints);
-            if(spearExists == 0)
+            if(spear == 0)
                 chooseSword();
-            else if(spearExists == 1 && spear>0)
+            else if(spear>0)
                 chooseSwordSpear();
         }
     }
+
+    else if(flamethrower == -1)
+{
+    flamethrower = 0;
+    gem = 50;
+}
+
 
     delay(500);
     cleardevice();
@@ -268,7 +131,7 @@ again4:
         losetextdragon();
         f1 = 1;
     }
-
+}
 //fightmagicanto
 
     /* magicantobody();
