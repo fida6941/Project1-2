@@ -78,8 +78,7 @@ chooseSword()
 
     setcolor(WHITE);
     settextstyle(8,HORIZ_DIR,2);
-    outtextxy(500,700,"Choose your weapon:");
-    outtextxy(500,750,"1.Sword");
+    outtextxy(500,700,"1.Sword");
 }
 
 
@@ -94,8 +93,7 @@ chooseSwordSpear()
 
     setcolor(WHITE);
     settextstyle(8,HORIZ_DIR,2);
-    outtextxy(500,700,"Choose your weapon:");
-    outtextxy(500,750,"1. Sword   2. Spear");
+    outtextxy(500,700,"1. Sword   2. Spear");
 }
 
 chooseWeapon2()
@@ -455,23 +453,28 @@ void wintextdragon()
     cleardevice();
 }
 
-void losetextmagicanto()
+void magicantoloses()
 {
     setcolor(YELLOW);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,3);
-    outtextxy(150,310,"You won!");
-    outtextxy(150,350,"You gained Magicanto's BLUE beam!");
-    outtextxy(150,400,"Press any key to continue");
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(250,250,"You won!");
+    delay(500);
+    outtextxy(250,300,"You gain Magicanto's blue beam.");
+    delay(500);
+    outtextxy(250,350,"And get your friend back.");
+    delay(500);
+    outtextxy(250,700,"Press any key to continue.");
     getch();
     cleardevice();
 }
 
+
 void wintextmagicanto()
 {
-    setcolor(YELLOW);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,4);
+    setcolor(RED);
+    settextstyle(2,HORIZ_DIR,10);
     outtextxy(150,310,"Ohno! Magicanto wins!");
-    outtextxy(150,350,"You gained -20 points.");
+    outtextxy(150,350,"You couldn't save your friend.");
     outtextxy(150,400,"Press any key to continue");
     getch();
     cleardevice();

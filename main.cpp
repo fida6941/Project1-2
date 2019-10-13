@@ -15,10 +15,10 @@ struct status
 int attackPower;
 struct status player1 = {"PLAYER", 100, attackPower, 10};
 struct status dragonman = {"DRAGONMAN", 100, 50, 20};
-struct status magicanto = {"MAGICANTO", 200, 50, 30};
+struct status magicanto = {"MAGICANTO", 150, 50, 30};
 struct status bandersnatch = {"BANDERSNATCH", 300, 100, 50};
 
-int gem = 30, flamethrower = 0, healingPotion = 0, swordAttack = 50, bluebeam = 0;
+int gem = 30, spear = 0, flamethrower = 0, healingPotion = 0, swordAttack = 50, bluebeam = 0;
 main()
 {
 
@@ -138,6 +138,7 @@ fightdragonman:
         else if(spear>0)
             chooseSwordSpear();
     }
+    cleardevice();
     if(player1.healthpoints==0)
     {
         wintextdragon();
@@ -169,7 +170,7 @@ shop:
         int input3 = 0;
         while(input3 != 1 && input3 != 2 && input3 != 3 && input3 != 4)
             input3 = getch() - '0';
-            cleardevice();
+        cleardevice();
         if(input3 == 1)
         {
             if(gem<20)
@@ -209,7 +210,7 @@ shop:
                 delay(1000);
                 settextstyle(2,HORIZ_DIR,8);
                 outtextxy(200,400,"Press any key to return to the shop");
-                 getch();
+                getch();
                 cleardevice();
                 goto shop;
             }
@@ -240,7 +241,7 @@ shop:
                 delay(1000);
                 settextstyle(2,HORIZ_DIR,8);
                 outtextxy(200,400,"Press any key to return to the shop");
-                 getch();
+                getch();
                 cleardevice();
                 goto shop;
             }
@@ -263,12 +264,12 @@ shop:
         {
             goto Forward;
         }
-        Forward:
+Forward:
         graveyard();
         int input4;
         while(input4 != 1 && input4 != 2)
             input4 = getch() - '0';
-            cleardevice();
+        cleardevice();
         if(input4 == 1)
             goto magicanto;
         else if(input4 == 2)
@@ -319,16 +320,16 @@ magicanto:
     outtextxy(450,350,"1. Fight him");
     outtextxy(450,400,"2. Try to be his friend");
     outtextxy(450,450,"3. Run away");
-    int input6;
+    int input6 = 0;
     while(input6 != 1 && input6 != 2 && input6 != 3)
         input6 = getch() - '0';
-        cleardevice();
+    cleardevice();
     if(input6 == 1)
         goto fightmagicanto;
     else if(input6 == 2)
     {
         magicantopuzzle();
-        int input7;
+        int input7 = 0;
         while(input7 != 1 && input7 != 2)
             input7 = getch() - '0';
         cleardevice();
@@ -340,7 +341,7 @@ magicanto:
         else if(input7 == 2)
         {
             magicantopuzzleright();
-            int input8;
+            int input8 = 0;
             while(input8 != 1 && input8 != 2)
                 input8 = getch() - '0';
             cleardevice();
@@ -351,179 +352,195 @@ magicanto:
             else if(input8 == 2)
             {
                 gotblubeam();
-                bluebeam = 1;
+                bluebeam = 80;
             }
         }
     }
 
 fightmagicanto:
     magicantobody();
-    /*playerbody();
-    villainHealthPoints2(200);
-    heroHealthPoints(100);
-    player1.healthpoints=100;
-    attackrun();
-    attackOption = 0;
-    while(attackOption != 1 && attackOption != 2)
-       attackOption = getch() - '0';
-    if(attackOption == 1)
-    {
-       i = 0;
-       while(player1.healthpoints>0 && magicanto.healthpoints>0)
-       {
-           if(i%2 == 0)
-           {
-               if(f1 == 1)
-                   chooseWeapon2();
-               else
-                   chooseWeapon();
-               char weaponOption = 0;
-               while(weaponOption != 1 && weaponOption != 2 && weaponOption != 3)
-                   weaponOption = getch() - '0';
-               ptr = &player1.attack;
-               if(weaponOption == 1)
-               {
-                   *ptr = 60;
-                   playerattacksword();
-               }
-               else if(weaponOption == 2)
-                   *ptr = 30;
-               else if(weaponOption == 3)
-               {
-                   *ptr = 80;
-                   playerattackflame();
-               }
-
-               magicanto.healthpoints = magicanto.healthpoints - (player1.attack - magicanto.defense);
-               if(magicanto.healthpoints<0)
-                   magicanto.healthpoints=0;
-               villainHealthPoints2(magicanto.healthpoints);
-           }
-           else
-           {
-               magicantoAttack();
-               player1.healthpoints = player1.healthpoints - (magicanto.attack - player1.defense);
-               if(player1.healthpoints<0)
-                   player1.healthpoints=0;
-               heroHealthPoints(player1.healthpoints);
-           }
-           i++;
-           playerbody();
-           magicantobody();
-           villainHealthPoints2(magicanto.healthpoints);
-           heroHealthPoints(player1.healthpoints);
-           if(f1 == 1)
-               chooseWeapon2();
-           else
-               chooseWeapon();
-       }
-    }
-
-    delay(500);
-    cleardevice();
-
-    if(player1.healthpoints==0)
-    {
-       wintextmagicanto();
-    }
-    else if(magicanto.healthpoints==0)
-    {
-       losetextmagicanto();
-       f2 = 1;
-    }
-
-    //fightbandersnatch
-
-    bandersnatchbody();
     playerbody();
-    villainHealthPoints3(300);
+    villainHealthPoints2(150);
     heroHealthPoints(100);
     player1.healthpoints=100;
-    attackrun();
-    attackOption = 0;
-    while(attackOption != 1 && attackOption != 2)
-       attackOption = getch() - '0';
-    if(attackOption == 1)
+    i = 0;
+    while(player1.healthpoints>0 && magicanto.healthpoints>0)
     {
-
-       i = 0;
-       while(player1.healthpoints>0 && bandersnatch.healthpoints>0)
-       {
-           if(i%2 == 0)
-           {
-               if(f1 == 1 && f2 == 1)
-                   chooseWeapon3();
-               else if(f1 == 1 && f2 == 0)
-                   chooseWeapon2();
-               else if(f1 == 0 && f2 == 1)
-                   chooseWeapon4();
-               else if(f1 == 0 && f2 == 0)
-                   chooseWeapon();
-               char weaponOption = 0;
-               while(weaponOption != 1 && weaponOption != 2 && weaponOption != 3 && weaponOption != 4)
-                   weaponOption = getch() - '0';
-               ptr = &player1.attack;
-               if(weaponOption == 1)
-               {
-                   *ptr = 70;
-                   playerattacksword();
-               }
-               else if(weaponOption == 2)
-                   *ptr = 30;
-               else if(weaponOption == 3)
-               {
-                   *ptr = 80;
-                   playerattackflame();
-               }
-               else if(weaponOption == 4)
-               {
-                   *ptr = 200;
-                   playerattackblueflame();
-               }
-
-               bandersnatch.healthpoints = bandersnatch.healthpoints - (player1.attack - bandersnatch.defense);
-               if(bandersnatch.healthpoints<0)
-                   bandersnatch.healthpoints=0;
-               villainHealthPoints3(bandersnatch.healthpoints);
-
-
-           }
-           else
-           {
-               bandersnatchAttack();
-               player1.healthpoints = player1.healthpoints - (bandersnatch.attack - player1.defense);
-               if(player1.healthpoints<0)
-                   player1.healthpoints=0;
-               heroHealthPoints(player1.healthpoints);
-           }
-           i++;
-           playerbody();
-           bandersnatchbody();
-           villainHealthPoints3(bandersnatch.healthpoints);
-           heroHealthPoints(player1.healthpoints);
-           if(f1 == 1 && f2 == 1)
-               chooseWeapon3();
-           else if(f1 == 1 && f2 == 0)
-               chooseWeapon2();
-           else if(f1 == 0 && f2 == 1)
-               chooseWeapon4();
-           else if(f1 == 0 && f2 == 0)
-               chooseWeapon();
-       }
+        if(i%2 == 0)
+        {
+            setcolor(WHITE);
+            settextstyle(8,HORIZ_DIR,2);
+            outtextxy(500,700,"1. Sword");
+            if(spear>0)
+                outtextxy(650,700,"2. Spear");
+            if(flamethrower>0)
+                outtextxy(800,700,"3. Flamethrower");
+            if(healingPotion>0)
+                outtextxy(1000,700,"4. Healing Potion");
+            int weaponOption = 0;
+            while(weaponOption != 1 && weaponOption != 2 && weaponOption != 3 && weaponOption != 4)
+                weaponOption = getch() - '0';
+                int *ptr;
+            ptr = &player1.attack;
+            if(weaponOption == 1)
+            {
+                *ptr = swordAttack;
+                playerattacksword();
+            }
+            else if(weaponOption == 2)
+            {
+                *ptr = 70;
+                playerattacksword();
+                spear--;
+            }
+            else if(weaponOption == 3)
+            {
+                *ptr = 80;
+                playerattackflame();
+                flamethrower--;
+            }
+            else if(weaponOption == 4)
+            {
+                player1.healthpoints = player1.healthpoints + 20;
+                healingPotion--;
+            }
+            magicanto.healthpoints = magicanto.healthpoints - (player1.attack - magicanto.defense);
+            if(magicanto.healthpoints<0)
+                magicanto.healthpoints=0;
+            villainHealthPoints2(magicanto.healthpoints);
+        }
+        else
+        {
+            magicantoAttack();
+            player1.healthpoints = player1.healthpoints - (magicanto.attack - player1.defense);
+            if(player1.healthpoints<0)
+                player1.healthpoints=0;
+            heroHealthPoints(player1.healthpoints);
+        }
+        i++;
+        playerbody();
+        magicantobody();
+        villainHealthPoints2(magicanto.healthpoints);
+        heroHealthPoints(player1.healthpoints);
+        setcolor(WHITE);
+        settextstyle(8,HORIZ_DIR,2);
+        outtextxy(500,700,"1. Sword");
+        if(spear>0)
+            outtextxy(650,700,"2. Spear");
+        if(flamethrower>0)
+            outtextxy(800,700,"3. Flamethrower");
+        if(healingPotion>0)
+            outtextxy(1000,700,"4. Healing Potion");
     }
 
-    delay(500);
-    cleardevice();
 
-    if(player1.healthpoints==0)
+delay(500);
+cleardevice();
+
+if(player1.healthpoints==0)
+{
+    wintextmagicanto();
+}
+else if(magicanto.healthpoints==0)
+{
+    magicantoloses();
+    f2 = 1;
+    bluebeam = 80;
+}
+
+//fightbandersnatch
+
+/*bandersnatchbody();
+playerbody();
+villainHealthPoints3(300);
+heroHealthPoints(100);
+player1.healthpoints=100;
+attackrun();
+attackOption = 0;
+while(attackOption != 1 && attackOption != 2)
+    attackOption = getch() - '0';
+if(attackOption == 1)
+{
+
+    i = 0;
+    while(player1.healthpoints>0 && bandersnatch.healthpoints>0)
     {
-       wintextbandersnatch();
+        if(i%2 == 0)
+        {
+            if(f1 == 1 && f2 == 1)
+                chooseWeapon3();
+            else if(f1 == 1 && f2 == 0)
+                chooseWeapon2();
+            else if(f1 == 0 && f2 == 1)
+                chooseWeapon4();
+            else if(f1 == 0 && f2 == 0)
+                chooseWeapon();
+            char weaponOption = 0;
+            while(weaponOption != 1 && weaponOption != 2 && weaponOption != 3 && weaponOption != 4)
+                weaponOption = getch() - '0';
+            ptr = &player1.attack;
+            if(weaponOption == 1)
+            {
+                *ptr = 70;
+                playerattacksword();
+            }
+            else if(weaponOption == 2)
+                *ptr = 30;
+            else if(weaponOption == 3)
+            {
+                *ptr = 80;
+                playerattackflame();
+            }
+            else if(weaponOption == 4)
+            {
+                *ptr = 200;
+                playerattackblueflame();
+            }
+
+            bandersnatch.healthpoints = bandersnatch.healthpoints - (player1.attack - bandersnatch.defense);
+            if(bandersnatch.healthpoints<0)
+                bandersnatch.healthpoints=0;
+            villainHealthPoints3(bandersnatch.healthpoints);
+
+
+        }
+        else
+        {
+            bandersnatchAttack();
+            player1.healthpoints = player1.healthpoints - (bandersnatch.attack - player1.defense);
+            if(player1.healthpoints<0)
+                player1.healthpoints=0;
+            heroHealthPoints(player1.healthpoints);
+        }
+        i++;
+        playerbody();
+        bandersnatchbody();
+        villainHealthPoints3(bandersnatch.healthpoints);
+        heroHealthPoints(player1.healthpoints);
+        if(f1 == 1 && f2 == 1)
+            chooseWeapon3();
+        else if(f1 == 1 && f2 == 0)
+            chooseWeapon2();
+        else if(f1 == 0 && f2 == 1)
+            chooseWeapon4();
+        else if(f1 == 0 && f2 == 0)
+            chooseWeapon();
     }
-    else if(bandersnatch.healthpoints=0)
-    {
-       losetextbandersnatch();
-       f3 = 1;
-    }
-    getch();*/
+}
+
+delay(500);
+cleardevice();
+
+if(player1.healthpoints==0)
+{
+    wintextbandersnatch();
+}
+else if(bandersnatch.healthpoints=0)
+{
+    losetextbandersnatch();
+    f3 = 1;
+}
+getch();
+*/
 }
 
