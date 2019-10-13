@@ -488,9 +488,9 @@ bandersnatch:
         runending();
         restartoption();
         int input14 = 0;
-        cleardevice();
         while(input14 != 1 && input14 != 2)
             input14 = getch() - '0';
+            cleardevice();
         if(input14 == 1)
         {
             if(gem>50)
@@ -623,9 +623,9 @@ fightbandersnatch:
             killending();
             restartoption();
             int input14 = 0;
-            cleardevice();
             while(input14 != 1 && input14 != 2)
                 input14 = getch() - '0';
+                cleardevice();
             if(input14 == 1)
             {
                 if(gem>50)
