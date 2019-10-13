@@ -427,23 +427,29 @@ void bandersnatchAttack()
     line(210,230,220,400);
 }
 
-void losetextdragon()
+
+   void dragonmanloses()
 {
     setcolor(YELLOW);
-    settextstyle(DEFAULT_FONT,HORIZ_DIR,3);
-    outtextxy(150,310,"You won!");
-    outtextxy(150,350,"You gained Dragonman's Flame thrower.");
-    outtextxy(150,400,"Press any key to continue");
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(250,250,"You won!");
+    delay(500);
+    outtextxy(250,300,"You gain Dragonman's flame thrower.");
+    delay(500);
+    outtextxy(250,350,"And get all of his 100 gems.");
+    delay(500);
+    outtextxy(250,700,"Press any key to continue.");
     getch();
     cleardevice();
 }
+
 
 void wintextdragon()
 {
     setcolor(YELLOW);
     settextstyle(DEFAULT_FONT,HORIZ_DIR,4);
     outtextxy(150,310,"Ohno! Dragonman wins!");
-    outtextxy(150,350,"You gained -20 points.");
+    outtextxy(150,350,"You've lost 20 gems.");
     outtextxy(150,400,"Press any key to continue");
     getch();
     cleardevice();
