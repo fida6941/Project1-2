@@ -114,7 +114,7 @@ again1:
     outtextxy(150,300,"1. Play");
     outtextxy(150,400,"2. Manual");
     outtextxy(150,500, "3. Exit");
-    int input;
+    int input = 0;
     while(input != 1 && input != 2 && input != 3)
         input = getch() - '0';
     if(input==1)
@@ -174,7 +174,7 @@ again1:
     }
     else if(input==3)
     {
-        return 0;
+        exit(1);
     }
 }
 
