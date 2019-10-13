@@ -520,16 +520,15 @@ bandersnatch:
     }
 
 fightbandersnatch:
-    int weaponOption = 0;
-    bandersnatchbody();
-    playerbody();
     villainHealthPoints3(300);
     heroHealthPoints(100);
+     bandersnatchbody();
+    playerbody();
     player1.healthpoints=100;
-    i = 0;
+    int j = 0;
     while(player1.healthpoints>0 && bandersnatch.healthpoints>0)
     {
-        if(i%2 == 0)
+        if(j%2 == 0)
         {
             setcolor(WHITE);
             settextstyle(8,HORIZ_DIR,2);
@@ -542,6 +541,8 @@ fightbandersnatch:
                 outtextxy(900,700,"4. Blue beam");
             if(bluebeam == 1)
                 outtextxy(1100,700,"5. Healing Potion");
+                int weaponOption = 0;
+            while(weaponOption != 1 && weaponOption != 2 && weaponOption != 3 && weaponOption != 4 && weaponOption != 5)
             weaponOption = getch() - '0';
             int *ptr;
             ptr = &player1.attack;
@@ -585,11 +586,12 @@ fightbandersnatch:
                 player1.healthpoints=0;
             heroHealthPoints(player1.healthpoints);
         }
-        i++;
-        playerbody();
-        bandersnatchbody();
+        j++;
+
         villainHealthPoints3(bandersnatch.healthpoints);
         heroHealthPoints(player1.healthpoints);
+         playerbody();
+        bandersnatchbody();
         setcolor(WHITE);
         settextstyle(8,HORIZ_DIR,2);
         outtextxy(400,700,"1. Sword");
