@@ -612,8 +612,6 @@ void frienddead()
     delay(500);
     outtextxy(300,450,"1. YES");
     outtextxy(300,520,"2. NO");
-    getch();
-    cleardevice();
 }
 
 void evilending()
