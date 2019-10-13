@@ -617,7 +617,7 @@ void frienddead()
 void evilending()
 {
     setcolor(RED);
-    settextstyle(2,HORIZ_DIR,4);
+    settextstyle(2,HORIZ_DIR,10);
     outtextxy(200,200,"You teamed up with BANDESNATCH!");
     delay(1000);
     outtextxy(200,400,"Bandersnatch was trying to attack GOG.");
