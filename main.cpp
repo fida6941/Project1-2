@@ -81,6 +81,8 @@ main()
             goto fightdragonman;
         }
     }
+    else if(input == 4)
+        goto villagegate;
 
 fightdragonman:
     dragonmanbody();
