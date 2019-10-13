@@ -55,7 +55,7 @@ void malePlayerStory()
 
     setcolor(RED);
     settextstyle(DEFAULT_FONT,HORIZ_DIR,2);
-    outtextxy(150,250, "This is Sayan Sama. The leader of the GOG(Guardian of the Galaxy). He was");
+    outtextxy(150,250, "This is Sayan Sama. The leader of the GOG(Guardians of the Galaxy). He was");
     outtextxy(150,270,"sent to Planet02 as the alarm was sent from here but found himself stuck here");
     outtextxy(150,290,"for 20 days. Guide him through the journey and keep him alive.");
     setcolor(RED);
@@ -94,7 +94,7 @@ void femalePlayerStory()
 
     setcolor(RED);
     settextstyle(DEFAULT_FONT,HORIZ_DIR,2);
-    outtextxy(150,220, "This is Sayan Sama. The leader of the GOG(Guardian of the Galaxy). She was");
+    outtextxy(150,220, "This is Sayan Sama. The leader of the GOG(Guardians of the Galaxy). She was");
     outtextxy(150,240,"sent to Planet02 as the alarm was sent from here but found herself stuck here");
     outtextxy(150,260,"for 20 days. Guide her through the journey and keep her alive.");
     setcolor(RED);
@@ -485,7 +485,7 @@ void magicantopuzzle()
     getch();
     cleardevice();
     setcolor(WHITE);
-    outtextxy(200,250,"Is it legal for a man in earth..");
+    outtextxy(200,250,"Is it possible for a man on earth..");
     delay(1000);
     outtextxy(200,300,"to marry his widow's sister?");
     delay(500);
@@ -537,4 +537,124 @@ void magicantopuzzlewrong()
     outtextxy(200,700,"Press any key to start the fight.");
     getch();
     cleardevice();
+}
+void friendalive()
+{
+    setcolor(BLUE);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(200,150,"Your friend lead you to BANDERSNATCH.");
+    delay(500);
+    outtextxy(200,250,"Fight him and save the planet.");
+    delay(500);
+    outtextxy(200,350,"Do you want to fight BANDERSNATCH?");
+    delay(500);
+    outtextxy(300,450,"1. YES");
+    outtextxy(300,520,"2. NO");
+    getch();
+    cleardevice();
+}
+
+void runending()
+{
+    setcolor(CYAN);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(200,200,"As you decided to run from BANDERSNATCH..");
+    delay(1000);
+    outtextxy(200,300,"You'll now spend the rest of your life");
+    delay(1000);
+    outtextxy(200,400,"Trying to save yourself from encountering him!");
+    delay(1000);
+    outtextxy(600,700,"THE END!");
+    getch();
+    cleardevice();
+}
+
+void winending()
+{
+    setcolor(CYAN);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(200,200,"You defeated BANDERSNATCH!!");
+    delay(1000);
+    outtextxy(200,300,"And saved this planet.");
+    delay(1000);
+    outtextxy(200,400,"Now you can go back to earth.");
+    delay(1000);
+    outtextxy(600,700,"THE END!");
+    getch();
+    cleardevice();
+    exit(1);
+}
+
+void chooseending()
+{
+    setcolor(CYAN);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(200,200,"You lost to BANDERSNATCH!!");
+    delay(1000);
+    outtextxy(200,300,"BANDERSNATCH: I have a choice for you..");
+    delay(1000);
+    outtextxy(200,400,"Team up with me. Would you?");
+    delay(500);
+    outtextxy(200,500,"1. Sure.");
+    delay(500);
+    outtextxy(200,550,"2. Never.");
+}
+
+void frienddead()
+{
+    setcolor(BLUE);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(200,150,"You've lost your friend but");
+    delay(500);
+    outtextxy(200,250,"you must still save the planet.");
+    delay(500);
+    outtextxy(200,350,"Do you want to fight BANDERSNATCH?");
+    delay(500);
+    outtextxy(300,450,"1. YES");
+    outtextxy(300,520,"2. NO");
+    getch();
+    cleardevice();
+}
+
+void evilending()
+{
+    setcolor(RED);
+    settextstyle(2,HORIZ_DIR,4);
+    outtextxy(200,200,"You teamed up with BANDESNATCH!");
+    delay(1000);
+    outtextxy(200,400,"Bandersnatch was trying to attack GOG.");
+    delay(500);
+    outtextxy(200,450,"You both will now help him to win against");
+    delay(500);
+    outtextxy(200,500,"GOG");
+    delay(500);
+    outtextxy(200,550,"TO BE CONTINUED..");
+    getch();
+    cleardevice();
+    exit(1);
+}
+
+void killending()
+{
+    setcolor(RED);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(300,300,"Both of you");
+    delay(1000);
+    outtextxy(300,500,"Get killed by BANDERSNATCH!");
+    delay(1000);
+    outtextxy(600,700,"THE END!");
+    getch();
+    cleardevice();
+}
+
+void restartoption()
+{
+    setcolor(WHITE);
+    settextstyle(2,HORIZ_DIR,10);
+    outtextxy(300,300,"You can restart using 50 gems!");
+    delay(1000);
+    outtextxy(300,400,"Would you like to restart?");
+    delay(500);
+    outtextxy(400,500,"1. YES.");
+    outtextxy(400,550,"1. NO.");
 }
