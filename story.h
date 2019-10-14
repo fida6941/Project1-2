@@ -515,6 +515,8 @@ void friendback()
     delay(1000);
     setcolor(WHITE);
     outtextxy(250,340,"You both start travelling again.");
+    delay(1000);
+    cleardevice();
 }
 void gotblubeam()
 {
